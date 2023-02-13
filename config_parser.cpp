@@ -21,6 +21,7 @@ config_parser::config_parser(std::string file_name) : _file_name(file_name)
 
 command config_parser::pop_command()
 {
-	command command;
-	
+	command command = _commands.front();
+	_commands.erase(_commands.begin());
+	return command;
 }
