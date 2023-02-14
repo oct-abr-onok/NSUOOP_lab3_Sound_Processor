@@ -1,6 +1,7 @@
 #include "main.h"
 #include "wav_io.h"
 #include "config_parser.h"
+#include "converters.h"
 
 int main(int argc, char* argv[])
 {
@@ -38,6 +39,12 @@ int main(int argc, char* argv[])
 
 	wav_input inp(input_files[0]);
 	wav_output outp(output_file, inp._header);
+
+	for (unsigned long i = 0; i < 1000/*(inp._header.subchunk2Size / 4)*/; i++)
+	{
+		sample mem = inp.read_sample(i);
+		outp.write_sample(mem, i);
+	}
 
 	return 0;
 }

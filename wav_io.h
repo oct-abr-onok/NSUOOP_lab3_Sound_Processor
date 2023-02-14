@@ -65,6 +65,7 @@ struct WAVHEADER
 	char subchunk2Id[4];
 
 	// numSamples * numChannels * bitsPerSample/8
+	// numSamples = subchunk2Size / 1 / 4
 	// Количество байт в области данных.
 	unsigned long subchunk2Size;
 
@@ -75,20 +76,21 @@ class wav_input
 {
 private:
 	std::string _file_name;
+	std::streampos _position;
 public:
 	WAVHEADER _header;
 	wav_input(std::string file_name); //инициализация
-	sample read_sample(int number); //возвращает один семпл и переходит к следующему
+	sample read_sample(unsigned long number); //возвращает один семпл и переходит к следующему
 };
 
 class wav_output
 {
 private:
 	std::string _file_name;
-
+	std::streampos _position;
 public:
 	wav_output(std::string file_name, WAVHEADER header);
-	void write_sample(sample sample, int number);
+	void write_sample(sample sample, unsigned long number);
 };
 
 
