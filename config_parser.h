@@ -19,6 +19,7 @@ private:
 	std::string _file_name;
 	std::vector<command> _commands;
 public:
+	int _command_number;
 	config_parser(std::string file_name);
 	command pop_command(); //возвращает комманду
 };

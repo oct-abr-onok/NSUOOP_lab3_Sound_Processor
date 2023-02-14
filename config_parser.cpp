@@ -51,6 +51,7 @@ config_parser::config_parser(std::string file_name) : _file_name(file_name)
 					mem.p2 = stoi(s);
 					flag = 0;
 					_commands.push_back(mem);
+					commandNumber++;
 				}
 				if (buffer[i] == '\0')
 				{
@@ -59,6 +60,7 @@ config_parser::config_parser(std::string file_name) : _file_name(file_name)
 			}
 		}
 	}
+	_command_number = commandNumber;
 }
 
 command config_parser::pop_command()
