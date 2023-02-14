@@ -31,9 +31,9 @@ wav_output::wav_output(std::string file_name, WAVHEADER header) : _file_name(fil
 void wav_output::write_sample(sample sample, unsigned long number)
 {
 	std::ofstream fout(_file_name, std::ofstream::binary);
-	auto test = fout.tellp();
+	//auto test = fout.tellp();
 	fout.seekp(_position, std::ios::beg);
-	auto test2 = fout.tellp();
+	//auto test2 = fout.tellp();
 	fout.write((char*)&sample, sizeof(sample));
 	_position = fout.tellp();
 	fout.close();

@@ -1,14 +1,14 @@
 #include "converters.h"
 
 //конвертеры
-void converter::work(int p1, int p2, std::vector<std::string> input_files, std::string output_file)
+void converter::work(int p1, int p2, std::string inp_copy, std::vector<std::string> input_files, std::string output_file)
 {
 	;
 }
 
-void mute_conv::work(int p1, int p2, std::vector<std::string> input_files, std::string output_file)
+void mute_conv::work(int p1, int p2, std::string inp_copy, std::vector<std::string> input_files, std::string output_file)
 {
-	wav_input inp(input_files[0]);
+	wav_input inp(inp_copy);
 	wav_output outp(output_file, inp._header);
 
 	for (unsigned long i = 0; (inp._header.subchunk2Size / 4); i++)
@@ -25,9 +25,9 @@ void mute_conv::work(int p1, int p2, std::vector<std::string> input_files, std::
 	}
 }
 
-void mix_conv::work(int p1, int p2, std::vector<std::string> input_files, std::string output_file)
+void mix_conv::work(int p1, int p2, std::string inp_copy, std::vector<std::string> input_files, std::string output_file)
 {
-	wav_input inp(input_files[0]);
+	wav_input inp(inp_copy);
 	wav_input inp2(input_files[p1]);
 	wav_output outp(output_file, inp._header);
 
@@ -46,9 +46,9 @@ void mix_conv::work(int p1, int p2, std::vector<std::string> input_files, std::s
 	}
 }
 
-void replace_conv::work(int p1, int p2, std::vector<std::string> input_files, std::string output_file)
+void replace_conv::work(int p1, int p2, std::string inp_copy,std::vector<std::string> input_files, std::string output_file)
 {
-	wav_input inp(input_files[0]);
+	wav_input inp(inp_copy);
 	wav_input inp2(input_files[p1]);
 	wav_output outp(output_file, inp._header);
 
@@ -65,6 +65,8 @@ void replace_conv::work(int p1, int p2, std::vector<std::string> input_files, st
 			outp.write_sample(mem, i);
 		}
 	}
+
+	
 }
 
 //фабрики
