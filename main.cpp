@@ -1,5 +1,6 @@
 #include "main.h"
 #include "wav_io.h"
+#include "config_parser.h"
 
 int main(int argc, char* argv[])
 {
@@ -32,6 +33,8 @@ int main(int argc, char* argv[])
 			continue;
 		}
 	}
+
+	config_parser c_p(config_file);
 
 	wav_input inp(input_files[0]);
 	wav_output outp(output_file, inp._header);

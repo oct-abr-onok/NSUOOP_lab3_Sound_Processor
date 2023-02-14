@@ -9,8 +9,9 @@ wav_input::wav_input(std::string file_name) : _file_name(file_name)
 
 sample wav_input::read_sample(int number)
 {
+	sample res;
 	std::ifstream fin(_file_name, std::ios::binary);
-	
+	//fin.read((char*)&res, );
 	fin.close();
 	return 32;
 }
