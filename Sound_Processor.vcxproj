@@ -127,10 +127,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="config_parser.cpp" />
+    <ClCompile Include="converters.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="wav_io.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="config_parser.h" />
+    <ClInclude Include="converters.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="wav_io.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="config.txt" />

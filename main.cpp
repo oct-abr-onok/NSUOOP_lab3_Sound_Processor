@@ -1,4 +1,5 @@
 #include "main.h"
+#include "wav_io.h"
 
 int main(int argc, char* argv[])
 {
@@ -32,8 +33,8 @@ int main(int argc, char* argv[])
 		}
 	}
 
-
-
+	wav_input inp(input_files[0]);
+	wav_output outp(output_file, inp._header);
 
 	return 0;
 }
